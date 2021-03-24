@@ -39,7 +39,7 @@ body.dark-theme {
 }
 
 .theme-switch__icon {
-  fill: #1976d2;
+  fill: currentColor;
   /* color: currentColor; */
   height: 24px;
   width: 24px;
