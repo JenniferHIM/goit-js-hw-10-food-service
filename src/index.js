@@ -17,31 +17,27 @@ const Theme = {
 refs.menu.insertAdjacentHTML('beforeend', menuTemplate (menuElement));
 
 refs.switch.addEventListener('change', setClassList);
-refs.switch.addEventListener('change', setLocalStorage);
+// refs.switch.addEventListener('change', setLocalStorage);
+
 
 function setClassList(e) {
   const check = refs.switch.checked;
-
-  if (check) {
-    refs.body.classList.add(Theme.DARK);
-    refs.body.classList.remove(Theme.LIGHT);
-  } else {
-    refs.body.classList.add(Theme.LIGHT);
-    refs.body.classList.remove(Theme.DARK);
-  }
-}
-
-function setLocalStorage(e) {
-  const check = refs.switch.checked;
-
-  if (check) {
+    if (check) {
+    changeTheme(Theme.DARK, Theme.LIGHT);
     localStorage.setItem('theme', Theme.DARK);
-  } else {
+    } else {
+    changeTheme(Theme.LIGHT, Theme.DARK);
     localStorage.removeItem('theme');
     localStorage.setItem('theme', Theme.LIGHT);
-  }
+    }
+   
 }
-
+function changeTheme(addTheme, removeTheme) {
+  refs.body.classList.add(addTheme);
+  refs.body.classList.remove(removeTheme);
+  }
+  
+  
 const themeLocal = localStorage.getItem('theme');
 
 if (themeLocal === Theme.DARK) {
